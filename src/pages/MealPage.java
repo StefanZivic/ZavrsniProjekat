@@ -14,7 +14,7 @@ public class MealPage extends BasicPage {
 
 	}
 //GET METODS
-	
+
 	public WebElement getFavouriteBtn() {
 		return this.driver.findElement(By.xpath("//*[@id=\"item_119\"]"));
 	}
@@ -22,14 +22,14 @@ public class MealPage extends BasicPage {
 	public WebElement getAddMealToCartBtn() {
 		return this.driver.findElement(By.xpath("//*[@id=\"body\"]/section[1]/div/div/div[2]/div/div[3]/div[2]/a"));
 	}
-	
+
 	public WebElement getAddQuantity() {
 		return this.driver.findElement(By.name("product_qty"));
 	}
 
 // METODS
-	
-	public void addMealToCart(String quantity) throws InterruptedException {
+
+	public void addMealToCart(String quantity) {
 		this.getAddQuantity().sendKeys(Keys.chord(Keys.CONTROL, "a"));
 		this.getAddQuantity().sendKeys(quantity);
 		this.getAddMealToCartBtn().click();
@@ -38,5 +38,5 @@ public class MealPage extends BasicPage {
 	public void addMealtoFavorites() {
 		this.getFavouriteBtn().click();
 	}
-	
+
 }

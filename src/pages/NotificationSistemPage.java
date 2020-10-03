@@ -29,7 +29,6 @@ public class NotificationSistemPage extends BasicPage {
 	}
 
 	public void WaitNotifDissapear() {
-		this.waiter = new WebDriverWait(driver, 30);
 		waiter.until(ExpectedConditions.attributeContains(By.xpath("//*[contains(@class, 'system_message')]"), "style",
 				"display: none;"));
 	}
