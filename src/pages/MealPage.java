@@ -12,7 +12,8 @@ public class MealPage extends BasicPage {
 		super(driver, waiter, js);
 
 	}
-
+//GET METODS
+	
 	public WebElement getFavouriteBtn() {
 		return this.driver.findElement(By.className("favourite  itemfav link"));
 	}

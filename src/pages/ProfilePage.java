@@ -62,13 +62,15 @@ public class ProfilePage extends BasicPage {
 
 // METODS	
 
-	private void FileUploadBtn() {
-		WebElement uploadImg = this.driver.findElement(By.xpath("//*[@id=\"profileInfo\"]/div/div[1]/div/a"));
+	public void FileUploadBtn() {
+		WebElement uploadImg = this.driver.findElement(By.xpath("//*[@id=\"profileInfo\"]/div/div[1]/div/a[1]"));
 		this.js.executeScript("arguments[0].click();", uploadImg);
+		
 	}
 
-	public void profilePicUpload(String imgPath) {
+	public void profilePicUpload(String imgPath) throws InterruptedException {
 		this.FileUploadBtn();
+		Thread.sleep(2000);
 		this.driver.findElement(By.xpath("//*[@id=\"form-upload\"]/input")).sendKeys(imgPath);
 	}
 
@@ -90,11 +92,9 @@ public class ProfilePage extends BasicPage {
 		this.getPhone().sendKeys(phone);
 		this.getZip().clear();
 		this.getZip().sendKeys(zip);
-		Thread.sleep(2000);
 		this.getCountry().selectByVisibleText(country);
 		Thread.sleep(2000);
 		this.getState().selectByVisibleText(state);
-		Thread.sleep(2000);
 		this.getCity().selectByVisibleText(city);
 
 	}
