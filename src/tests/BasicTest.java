@@ -15,12 +15,14 @@ import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
 
-//import pages.AuthPage;
-//import pages.LocationPopupPage;
-//import pages.LoginPage;
-//import pages.NotificationSistemPage;
-//import pages.ProfilePage;
+import pages.AuthPage;
+import pages.LocationPopupPage;
+import pages.LoginPage;
+import pages.MealPage;
+import pages.NotificationSistemPage;
+import pages.ProfilePage;
 
 public abstract class BasicTest {
 
@@ -46,6 +48,7 @@ public abstract class BasicTest {
 //	NotificationSistemPage nsp = new NotificationSistemPage(this.driver, this.waiter, this.js);
 //	ProfilePage profP = new ProfilePage(this.driver, this.waiter, this.js);
 //	AuthPage ap = new AuthPage(this.driver, this.waiter, this.js);
+//	MealPage mp = new MealPage(this.driver, this.waiter, this.js);
 		
 	@org.testng.annotations.BeforeClass
 	public void BeforeClass() {
@@ -66,6 +69,7 @@ public abstract class BasicTest {
 //		NotificationSistemPage nsp = new NotificationSistemPage(this.driver, this.waiter, this.js);
 //		ProfilePage profP = new ProfilePage(this.driver, this.waiter, this.js);
 //		AuthPage ap = new AuthPage(this.driver, this.waiter, this.js);
+//		MealPage mp = new MealPage(this.driver, this.waiter, this.js);
 //	}
 
 	@AfterMethod

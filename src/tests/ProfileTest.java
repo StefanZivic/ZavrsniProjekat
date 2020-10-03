@@ -86,6 +86,8 @@ public class ProfileTest extends BasicTest {
 		
 		ap.logout();
 		
+		sa.assertAll();
+		
 	}
 
 
