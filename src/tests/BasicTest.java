@@ -15,15 +15,7 @@ import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-import pages.AuthPage;
-import pages.LocationPopupPage;
-import pages.LoginPage;
-import pages.MealPage;
-import pages.NotificationSistemPage;
-import pages.ProfilePage;
 
 public abstract class BasicTest {
 
@@ -45,13 +37,6 @@ public abstract class BasicTest {
 	protected String city = "Aldona";
 
 	SoftAssert sa = new SoftAssert();
-
-//	protected LocationPopupPage locPopP = new LocationPopupPage(this.driver, this.waiter, this.js);
-//	protected LoginPage logP = new LoginPage(this.driver, this.waiter, this.js);
-//	protected NotificationSistemPage nsp = new NotificationSistemPage(this.driver, this.waiter, this.js);
-//	protected ProfilePage profP = new ProfilePage(this.driver, this.waiter, this.js);
-//	protected AuthPage ap = new AuthPage(this.driver, this.waiter, this.js);
-//	protected MealPage mp = new MealPage(this.driver, this.waiter, this.js);
 
 	@org.testng.annotations.BeforeClass
 	public void BeforeClass() {
@@ -76,8 +61,8 @@ public abstract class BasicTest {
 			FileHandler.copy(ss, save);
 		}
 		this.driver.manage().deleteAllCookies();
-		Thread.sleep(2000);
 		this.driver.navigate().refresh();
+		Thread.sleep(3000);
 	}
 
 	@org.testng.annotations.AfterClass
