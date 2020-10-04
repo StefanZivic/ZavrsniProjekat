@@ -60,7 +60,15 @@ public class ProfilePage extends BasicPage {
 		return selectCity;
 	}
 
+	public WebElement getSaveBtn() {
+		return this.driver.findElement(By.xpath("//*[@id=\"profileInfoFrm\"]/div[5]/div/fieldset/input"));
+	}
+	
 // METODS	
+	
+	public void saveProfile() {
+		this.js.executeScript("arguments[0].click()", this.getSaveBtn());
+	}
 
 	public void FileUploadBtn() {
 		WebElement uploadImg = this.driver.findElement(By.xpath("//*[@id=\"profileInfo\"]/div/div[1]/div/a[1]"));
@@ -70,7 +78,6 @@ public class ProfilePage extends BasicPage {
 
 	public void profilePicUpload(String imgPath) throws InterruptedException {
 		this.FileUploadBtn();
-		Thread.sleep(2000);
 		this.driver.findElement(By.xpath("//*[@id=\"form-upload\"]/input")).sendKeys(imgPath);
 	}
 
