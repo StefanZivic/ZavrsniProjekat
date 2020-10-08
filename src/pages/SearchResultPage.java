@@ -1,7 +1,7 @@
 package pages;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -16,27 +16,27 @@ public class SearchResultPage extends BasicPage {
 
 // GET METODS
 
-	private List<WebElement> getAllSearchResults() {
-		List<WebElement> allMeals = this.driver.findElements(By.xpath("//*[@class='product-name']/a"));
-		return allMeals;
+	public List<WebElement> getAllSearchResults() {
+		return this.driver.findElements(By.xpath("//*[@class='product-name']/a"));
+	
+//		
+//		List<WebElement> allMeals = this.driver.findElements(By.xpath("//*[@class='product-name']/a"));
+//		return allMeals;
 	}
 
 // METODS
 
-//	public String allSearchResultMealNames() {
-//		for (int i = 0; i < this.getAllSearchResults().size(); i++) {
-//			if(a == 2) {
-//			return 	this.getAllSearchResults().get(i).getText();
-//			}
-//			else {
-//				return null;
-//			}
-//		}
-//	
-//	}
+	public List<String> allSearchResultMealNames() {
+		List<String> allNames = new ArrayList<>();
+		for (int i = 0; i < this.getAllSearchResults().size(); i++) {
+			allNames.add(this.getAllSearchResults().get(i).getText());
+
+		}
+		return allNames;
+	}
 
 	public int numberOfResults() {
 		return this.getAllSearchResults().size();
-	}
 
+	}
 }

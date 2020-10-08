@@ -37,7 +37,7 @@ public abstract class BasicTest {
 	protected String city = "Aldona";
 
 	SoftAssert sa = new SoftAssert();
-
+	
 	@org.testng.annotations.BeforeClass
 	public void BeforeClass() {
 		System.setProperty("webdriver.chrome.driver", "driver-lib\\chromedriver.exe");

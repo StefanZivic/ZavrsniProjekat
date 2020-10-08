@@ -2,19 +2,15 @@ package tests;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.junit.Assert;
 import org.testng.annotations.Test;
 
 import pages.LocationPopupPage;
-import pages.MealPage;
-import pages.NotificationSistemPage;
 import pages.SearchResultPage;
 
 public class SearchTest extends BasicTest {
@@ -23,8 +19,6 @@ public class SearchTest extends BasicTest {
 	public void searchResultsTest() throws InterruptedException, IOException {
 
 		LocationPopupPage locPopP = new LocationPopupPage(this.driver, this.waiter, this.js);
-		NotificationSistemPage nsp = new NotificationSistemPage(this.driver, this.waiter, this.js);
-		MealPage mp = new MealPage(this.driver, this.waiter, this.js);
 		SearchResultPage srp = new SearchResultPage(this.driver, this.waiter, this.js);
 
 		this.driver.navigate().to(this.BaseUrl + "/meals");
@@ -37,34 +31,33 @@ public class SearchTest extends BasicTest {
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 		XSSFSheet sheet = wb.getSheet("Meal Search Results");
 
-		for (int i = 1; i < sheet.getLastRowNum(); i++) {
+		for (int i = 1; i < 7; i++) {
 
 			XSSFRow row = sheet.getRow(i);
 
 			XSSFCell location = row.getCell(0);
 			XSSFCell link = row.getCell(1);
 			XSSFCell numberOfResultsData = row.getCell(2);
-			int inum = (int) numberOfResultsData.getNumericCellValue();
 
-			this.driver.get(link.getStringCellValue());
+			int intNumOfResults = (int) numberOfResultsData.getNumericCellValue();
+
+			this.driver.navigate().to(link.getStringCellValue());
 
 			locPopP.enterSelectLocation();
 			locPopP.setLocation(location.getStringCellValue());
 
-			for (int j = 3; j < 3 + inum; j++) {
-				
-				row.getCell(j).getStringCellValue();
+			Thread.sleep(2000);
+			sa.assertEquals(intNumOfResults, srp.numberOfResults(), "[Error] Number of results are not the same!");
+
+			for (int j = 3; j < 3 + intNumOfResults; j++) {
+
+				sa.assertTrue(srp.allSearchResultMealNames().get(j - 3).contains(row.getCell(j).getStringCellValue()),
+						"[Error] Meal names are not the same!");
+
 			}
-			
-			Assert.assertEquals(inum, srp.numberOfResults());
 
-			Thread.sleep(3000);
-
+			fis.close();
+			wb.close();
 		}
-
-		fis.close();
-		wb.close();
-
 	}
-
 }

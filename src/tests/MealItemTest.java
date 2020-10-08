@@ -15,7 +15,7 @@ import pages.NotificationSistemPage;
 
 public class MealItemTest extends BasicTest {
 
-	@Test(priority = 5)
+	@Test(priority = 0)
 	public void addMealToCartTest() throws InterruptedException {
 
 		this.driver.navigate().to(this.BaseUrl + "/meal/lobster-shrimp-chicken-quesadilla-combo");
@@ -45,7 +45,7 @@ public class MealItemTest extends BasicTest {
 		sa.assertAll();
 	}
 
-	@Test(priority = 10)
+	@Test(priority = 5)
 	public void addMealToFavoritesTest() throws InterruptedException {
 
 		LocationPopupPage locPopP = new LocationPopupPage(this.driver, this.waiter, this.js);
@@ -73,7 +73,7 @@ public class MealItemTest extends BasicTest {
 		sa.assertAll();
 	}
 
-	@Test(priority = 0)
+	@Test(priority = 10)
 	public void clearCartTest() throws IOException, InterruptedException {
 
 		this.driver.navigate().to(this.BaseUrl + "/meals");
