@@ -68,7 +68,8 @@ public class MealItemTest extends BasicTest {
 
 		mp.addMealtoFavorites();
 
-		sa.assertEquals(nsp.getMessage(), "Product has been added to your favorites.", "[Error] Something went wrong!");
+		sa.assertEquals(nsp.getMessage(), "Product has been added to your favorites.",
+				"[Error] Product has not been added to your favorites.!");
 
 		sa.assertAll();
 	}
