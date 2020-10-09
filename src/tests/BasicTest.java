@@ -37,7 +37,7 @@ public abstract class BasicTest {
 	protected String city = "Aldona";
 
 	SoftAssert sa = new SoftAssert();
-	
+
 	@org.testng.annotations.BeforeClass
 	public void BeforeClass() {
 		System.setProperty("webdriver.chrome.driver", "driver-lib\\chromedriver.exe");
@@ -53,6 +53,7 @@ public abstract class BasicTest {
 
 	@AfterMethod
 	public void afterTest(ITestResult result) throws IOException, InterruptedException {
+
 		if (result.getStatus() == ITestResult.FAILURE) {
 
 			File ss = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -62,7 +63,7 @@ public abstract class BasicTest {
 		}
 		this.driver.manage().deleteAllCookies();
 		this.driver.navigate().refresh();
-		Thread.sleep(3000);
+
 	}
 
 	@org.testng.annotations.AfterClass

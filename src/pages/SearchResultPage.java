@@ -18,10 +18,6 @@ public class SearchResultPage extends BasicPage {
 
 	public List<WebElement> getAllSearchResults() {
 		return this.driver.findElements(By.xpath("//*[@class='product-name']/a"));
-	
-//		
-//		List<WebElement> allMeals = this.driver.findElements(By.xpath("//*[@class='product-name']/a"));
-//		return allMeals;
 	}
 
 // METODS

@@ -33,7 +33,7 @@ public class ProfileTest extends BasicTest {
 
 		profP.changeAll(this.firstName, this.lastName, this.address, this.phone, this.zip, this.country, this.state,
 				this.city);
-
+		Thread.sleep(3000);
 		profP.saveProfile();
 
 		sa.assertEquals(nsp.getMessage(), "Setup Successful", "[Error] Setup unsuccessful!");

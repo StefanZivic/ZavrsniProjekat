@@ -25,19 +25,17 @@ public class MealItemTest extends BasicTest {
 		MealPage mp = new MealPage(this.driver, this.waiter, this.js);
 
 		locPopP.closeDialog();
-
+		Thread.sleep(2000);
 		mp.addMealToCart("5");
 
-		sa.assertEquals(nsp.getMessage(), "The Following Errors Occurred:\n" + "Please Select Location",
-				"[Error] Location Failed");
-
+		sa.assertTrue(nsp.getMessage().contains("The Following Errors Occurred:"), "[Error] Location Failed");
+		sa.assertTrue(nsp.getMessage().contains("Please Select Location"), "[Error] Location Failed");
+		
 		nsp.WaitNotifDissapear();
 
 		locPopP.enterSelectLocation();
 		locPopP.setLocation("City Center - Albany");
-
 		Thread.sleep(2000);
-
 		mp.addMealToCart("3");
 
 		sa.assertEquals(nsp.getMessage(), "Meal Added To Cart", "[Error] Add Meal To Cart unsuccessful");
@@ -56,9 +54,9 @@ public class MealItemTest extends BasicTest {
 		this.driver.navigate().to(this.BaseUrl + "/meal/lobster-shrimp-chicken-quesadilla-combo");
 
 		locPopP.closeDialog();
-
+		Thread.sleep(2000);
 		mp.addMealtoFavorites();
-
+		
 		sa.assertEquals(nsp.getMessage(), "Please login first!", "[Error] You're already logged in!");
 
 		this.driver.navigate().to(this.BaseUrl + "/guest-user/login-form");
